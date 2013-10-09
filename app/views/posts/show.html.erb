@@ -1,11 +1,29 @@
-<h4>
-	<%= @post.title %>
-</h4>
+<div class="container">
+  <h4>
+	  <%= @post.title %>
+  </h4>
 
-<p>
-	<%= @post.url %>
-</p>
+  <p>
+	  <%= @post.url %>
+  </p>
 
-<p>
-	<%= @post.description %>
-</p>
+  <p>
+	  <%= @post.description %>
+  </p>
+
+  <%= render 'shared/errors', obj: @comment %>
+
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.label :body, "New Comment:" %>
+    <%= f.text_area :body %>
+    <br/>
+    <%= f.submit "Submit Comment", class: "btn btn-primary" %>
+  <% end %>
+
+  <h5>Comments:</h5>
+  <ul>
+  	<% @post.comments.each do |comment| %>
+  	  <li><%= comment.body %></li>
+  	<% end %>
+  </ul>
+</div>
