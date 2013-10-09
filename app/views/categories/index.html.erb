@@ -1,0 +1,7 @@
+<h3>Here are the available categories:</h3>
+
+<ul>
+	<% @categories.each do |cat| %>
+	<li><%= link_to cat.name, cat %></li>
+	<% end %>
+</ul>
