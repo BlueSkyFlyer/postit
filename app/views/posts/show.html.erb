@@ -11,6 +11,19 @@
 	  <%= @post.description %>
   </p>
 
+  <p>
+    Tagged Categories:
+    <% if @post.categories.size == 0 %>
+      No categories associated with this post
+    <% else %>
+      <% @post.categories.each do |cat| %>
+      <ul>
+        <li><%= link_to cat.name, cat %></li>
+      </ul>
+      <% end %>
+    <% end %>
+  </p>
+
   <%= render 'shared/errors', obj: @comment %>
 
   <%= form_for [@post, @comment] do |f| %>
