@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
+before_action :require_user
+
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.new(comment_params)
-		@comment.user_id = 1 # Will improve this soon
+		@comment.creator = current_user
 
 		if @comment.save
 			redirect_to post_path(@post), notice: "Your comment was submitted"
