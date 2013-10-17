@@ -4,6 +4,10 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <%= link_to '+', '' %>
+      |
+      <%= link_to '-', '' %>
+      |
     	<%= link_to post.title, post %>
     	<% if logged_in? %>
     	  [<%= link_to 'edit', edit_post_path(post) %>]
