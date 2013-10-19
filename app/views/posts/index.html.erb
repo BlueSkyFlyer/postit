@@ -1,19 +1,7 @@
 <h3>Welcome!</h3>
 
 <p>Here are the recent posts:</p>
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= link_to '+', '' %>
-      |
-      <%= link_to '-', '' %>
-      |
-    	<%= link_to post.title, post %>
-    	<% if logged_in? %>
-    	  [<%= link_to 'edit', edit_post_path(post) %>]
-    	<% end %>
-    	<br/>
-      created at <%= display_datetime(post.created_at) %>
-    </li>
-  <% end %>
-</ul>
+
+<% @posts.each do |post| %>
+  <%= render 'post', post: post %>
+<% end %>

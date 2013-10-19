@@ -13,7 +13,19 @@ before_action :require_user
 		end
 	end
 
+  def vote
+		Vote.new(voteable: @comment, creator: current_user, vote: params[:vote])
+
+		if @vote.save
+		  redirect_to :back, notice: "Your vote was saved"
+		else
+			render "posts/show"
+		end
+	end
+
+	private
+
 	def comment_params
-		params.require(:comment).permit(:body)
+		params.require(:comment).permit!
 	end
 end

@@ -8,15 +8,15 @@ PostitTemplate::Application.routes.draw do
 
   resources :posts, except: [:destroy] do
     member do
-      post 'vote'
+      post 'vote' # equivalent to '/posts/:id/vote', to: 'posts#vote'
     end
-  end
 
   	resources :comments, only: [:create] do
       member do
         post 'vote'
       end
     end
+  end
 
   resources :categories, only: [:index, :new, :create, :show]
   resources :users, only: [:create]
