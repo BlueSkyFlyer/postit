@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 before_action :require_user
 
 	def create
-		@post = Post.find(params[:post_id])
+		@post = Post.find_by(slug: params[:post_id])
 		@comment = @post.comments.new(comment_params)
 		@comment.creator = current_user
 
@@ -14,13 +14,8 @@ before_action :require_user
 	end
 
   def vote
-		Vote.new(voteable: @comment, creator: current_user, vote: params[:vote])
-
-		if @vote.save
-		  redirect_to :back, notice: "Your vote was saved"
-		else
-			render "posts/show"
-		end
+		@vote = Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
+		redirect_to :back, notice: "Your vote was saved"
 	end
 
 	private
