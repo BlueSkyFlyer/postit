@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def vote
+  def vote 
     @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
     
     respond_to do |format|

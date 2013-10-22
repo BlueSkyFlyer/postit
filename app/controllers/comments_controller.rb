@@ -14,7 +14,10 @@ before_action :require_user
 	end
 
   def vote
-		@vote = Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
+		post = Post.find_by(slug: params[:post_id])
+		@comment = Comment.find(params[:id])
+		@comment.post = post
+		Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
 		redirect_to :back, notice: "Your vote was saved"
 	end
 
