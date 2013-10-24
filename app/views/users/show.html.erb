@@ -1,3 +1,7 @@
-<h4>My Profile</h4>
+<h3><%= current_user.username %></h3>
 
-<%= current_user.username %>
+<h5>Recent Posts:</h5>
+
+<% current_user.posts.each do |post| %>
+  <%= render 'shared/post', post: post %>
+<% end %>
