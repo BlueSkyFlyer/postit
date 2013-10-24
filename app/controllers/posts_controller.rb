@@ -39,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def vote 
+    @post = Post.find_by(slug: params[:id])
     @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
     
     respond_to do |format|
