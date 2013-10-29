@@ -18,7 +18,10 @@ before_action :require_user
 		@comment = Comment.find(params[:id])
 		@comment.post = post
 		Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
-		redirect_to :back, notice: "Your vote was saved"
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	private

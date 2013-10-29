@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
     
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Your vote was counted" }
+      format.html
       format.js
     end
   end
