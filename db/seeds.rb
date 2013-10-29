@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Category.find_or_create_by_name(name: "Skydiving")
+Category.find_or_create_by_name(name: "BASE Jumping")
+Category.find_or_create_by_name(name: "Speed Flying")
+Category.find_or_create_by_name(name: "Paragliding")
+Category.find_or_create_by_name(name: "Hang Gliding")
