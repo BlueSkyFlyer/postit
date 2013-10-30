@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(session[:user_id])
   end
 
   def show
@@ -22,6 +23,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(session[:user_id])
+    if @user.update(user_params) 
+      flash[:notice] = "Your profile was updated."
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
@@ -29,5 +37,4 @@ class UsersController < ApplicationController
   def user_params
   	params.require(:user).permit(:username, :password, :time_zone)
   end
-
 end

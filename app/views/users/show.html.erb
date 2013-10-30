@@ -1,5 +1,7 @@
-<h3><%= current_user.username %></h3>
-
+<ul class="inline">
+  <li><h3><%= current_user.username %></h3></li>
+  <li>[<%= link_to 'edit', edit_user_path(@user) %>]</li>
+</ul>
 <h5>Recent Posts:</h5>
 
 <% current_user.posts.each do |post| %>
