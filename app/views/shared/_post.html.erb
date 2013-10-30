@@ -13,9 +13,11 @@
 
 	<div class='span8 well'>
 
-		<h4><%= link_to post.title, post %></h4>
+		<ul class="inline">
+		  <li><h4><%= link_to post.title, post %></h4></li>
+			<li><%= link_to post.url, fix_url(post.url) %></li>
+		</ul>
 		<p>
-			<%= link_to post.url, fix_url(post.url) %>
 			<%= post.description %>
 		</p>
 		<% if logged_in? && current_user == post.creator %>
