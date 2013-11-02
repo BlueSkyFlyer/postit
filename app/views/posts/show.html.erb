@@ -36,7 +36,7 @@
   <h5>Comments:</h5>
   <ul>
   	<% @post.reload.comments.each do |comment| %>
-      <%= render 'comment', comment: comment %>
+      <%= render 'comments/comment', comment: comment %>
   	<% end %>
   </ul>
 </div>
